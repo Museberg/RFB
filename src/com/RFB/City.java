@@ -1,5 +1,9 @@
 package com.RFB;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class City {
     private String cityName;
     private int zipCode;
@@ -34,9 +38,15 @@ public class City {
     public void setCity_id(int city_id) {
         this.city_id = city_id;
     }
-    public City readCity(){
-        Scanner
-        City city = new City();
-        return city;
+    public static ArrayList<City> readCity(){
+        ArrayList<City> cities = new ArrayList<>();
+        Scanner input = new Scanner(new File("database/city.txt"));
+        String line;
+        while(input.hasNextLine()) {
+            line = input.nextLine();
+            String [] lineInput = line.split(",");
+            City city = new City(lineInput[0], Integer.parseInt(lineInput[1]),Integer.parseInt(lineInput[2]));
+        }
+        return cities;
     }
 }
