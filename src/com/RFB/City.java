@@ -60,11 +60,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "City{" +
-                "cityName='" + cityName + '\'' +
-                ", zipCode=" + zipCode +
-                ", city_id=" + city_id +
-                '}';
+        return "ID: "+ city_id + "\nCity: " + cityName + ", " + zipCode;
     }
 
     public static void writeCity(ArrayList<City> cities) throws FileNotFoundException {
