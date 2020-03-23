@@ -17,13 +17,13 @@ public class Main {
         writeToFile(employees, cities, parents, children, schedules, rooms, households);
         System.out.println("HEJ");
     }
-    
+
 
     public static void readFromFile(ArrayList<Employee> employees, ArrayList<City> cities, ArrayList<Parent> parents, ArrayList<Child> children, ArrayList<WorkSchedule> schedules, ArrayList<Room> rooms, ArrayList<Household> households) throws FileNotFoundException {
         /*
-        ArrayList<Employee> employees = Employee.readEmployee();
-        ArrayList<City> cities = City.readCity();
-        ArrayList<Parent> parents = Parent.readParent();
+        ArrayList<Employee> employees = Employee.readFromFile();
+        ArrayList<City> cities = City.readFromFile();
+        ArrayList<Parent> parents = Parent.readFromFile();
         ArrayList<Child> children = Child.readFromFile();
         ArrayList<WorkSchedule> schedules = WorkSchedule.readFromFile();
         ArrayList<Room> rooms = Room.readFromFile();
@@ -34,9 +34,9 @@ public class Main {
 
     public static void writeToFile(ArrayList<Employee> employees, ArrayList<City> cities, ArrayList<Parent> parents, ArrayList<Child> children, ArrayList<WorkSchedule> schedules, ArrayList<Room> rooms, ArrayList<Household> households) throws FileNotFoundException {
         /*
-        Employee.writeEmployee(employees);
-        City.writeCity(cities);
-        Parent.writeParent(parents);
+        Employee.writeToFile(employees);
+        City.writeToFile(cities);
+        Parent.writeToFile(parents);
         Child.writeToFile(children);
         WorkSchedule.writeToFile(schedules);
         Room.writeToFile(rooms);
