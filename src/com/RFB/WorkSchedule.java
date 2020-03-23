@@ -10,10 +10,10 @@ public class WorkSchedule {
     private int workSchedule_id;
     private int workSchedule_week;
     private String workSchedule_day;
-    private double workSchedule_hourStart;
-    private double workSchedule_hourEnd;
+    private String workSchedule_hourStart;
+    private String workSchedule_hourEnd;
 
-    public WorkSchedule(int workSchedule_id, int workSchedule_week, String workSchedule_day, double workSchedule_hourStart, double workSchedule_hourEnd) {
+    public WorkSchedule(int workSchedule_id, int workSchedule_week, String workSchedule_day, String workSchedule_hourStart, String workSchedule_hourEnd) {
         this.workSchedule_id = workSchedule_id;
         this.workSchedule_week = workSchedule_week;
         this.workSchedule_day = workSchedule_day;
@@ -45,30 +45,31 @@ public class WorkSchedule {
         this.workSchedule_day = workSchedule_day;
     }
 
-    public double getWorkSchedule_hourStart() {
+    public String getWorkSchedule_hourStart() {
         return workSchedule_hourStart;
     }
 
-    public void setWorkSchedule_hourStart(double workSchedule_hourStart) {
+    public void setWorkSchedule_hourStart(String workSchedule_hourStart) {
         this.workSchedule_hourStart = workSchedule_hourStart;
     }
 
-    public double getWorkSchedule_hourEnd() {
+    public String getWorkSchedule_hourEnd() {
         return workSchedule_hourEnd;
     }
 
-    public void setWorkSchedule_hourEnd(double workSchedule_hourEnd) {
+    public void setWorkSchedule_hourEnd(String workSchedule_hourEnd) {
         this.workSchedule_hourEnd = workSchedule_hourEnd;
     }
 
     public static ArrayList<WorkSchedule> readFromFile() throws FileNotFoundException {
         ArrayList<WorkSchedule> schedules = new ArrayList<>();
-        Scanner input = new Scanner(new File("Database/workschedule.txt"));
+        String bs = System.getProperty("file.separator");
+        Scanner input = new Scanner(new File("src"+bs+"Database"+bs+"workschedule.txt"));
         String line;
         while(input.hasNextLine()) {
             line = input.nextLine();
             String [] lineInput = line.split(",");
-            WorkSchedule schedule = new WorkSchedule(Integer.parseInt(lineInput[0]), Integer.parseInt(lineInput[1]), lineInput[2], Double.parseDouble(lineInput[3]), Double.parseDouble(lineInput[4]));
+            WorkSchedule schedule = new WorkSchedule(Integer.parseInt(lineInput[0]), Integer.parseInt(lineInput[1]), lineInput[2], lineInput[3], lineInput[4]);
             schedules.add(schedule);
         }
         return schedules;
@@ -79,9 +80,16 @@ public class WorkSchedule {
     }
 
     public static void writeToFile(ArrayList<WorkSchedule> schedules) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("Database/workschedule.txt"));
+        String bs = System.getProperty("file.separator");
+        PrintStream output = new PrintStream(new File("src"+bs+"Database"+bs+"workschedule.txt"));
             for (int i = 0; i < schedules.size(); i++) {
                 output.println(schedules.get(i).toFile());
             }
+    }
+
+    @Override
+    public String toString(){
+        return String.format("ID: %d%nWeek: %d%nDay: %s%nShift start: %s%nShift end: %s%n",
+                workSchedule_id, workSchedule_week, workSchedule_day, workSchedule_hourStart, workSchedule_hourEnd);
     }
 }

@@ -7,13 +7,16 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         readFromFile();
+        ArrayList<WorkSchedule> schedule = WorkSchedule.readFromFile();
+        System.out.println(schedule);
         System.out.println("Hej");
+        System.out.println(System.getProperty("file.separator"));
     }
 
     public static void readFromFile() throws FileNotFoundException {
         //ArrayList<Employee> employeeAL = new ArrayList<Employee>();
-        ArrayList<City> cities = City.readCity();
-        System.out.println(cities.get(0));
+        //ArrayList<City> cities = City.readCity();
+        //System.out.println(cities.get(0));
         //ArrayList<Parent> parents = Parent.readParent();
         /*
         ArrayList<Child> children = Child.readFromFile();
@@ -22,5 +25,7 @@ public class Main {
         ArrayList<Household> households = Household.readFromFile();
         ArrayList<Employee> employeeAL = Employee.readEmployee();
          */
+        //ArrayList<WorkSchedule> schedule = WorkSchedule.readFromFile();
+        //System.out.println(schedule.get(0));
     }
 }
