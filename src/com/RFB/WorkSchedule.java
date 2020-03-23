@@ -2,6 +2,7 @@ package com.RFB;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -71,5 +72,16 @@ public class WorkSchedule {
             schedules.add(schedule);
         }
         return schedules;
+    }
+
+    public String toFile() {
+        return this.workSchedule_id + ", " + this.workSchedule_week + ", " + this.workSchedule_day + ", " + this.workSchedule_hourStart + ", " + this.workSchedule_hourEnd;
+    }
+
+    public static void writeToFile(ArrayList<WorkSchedule> schedules) throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File("database/workschedule.txt"));
+            for (int i = 0; i < schedules.size(); i++) {
+                output.println(schedules.get(i).toFile());
+            }
     }
 }

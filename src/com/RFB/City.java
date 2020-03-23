@@ -47,7 +47,7 @@ public class City {
 
     public static ArrayList<City> readCity() throws FileNotFoundException {
         ArrayList<City> cities = new ArrayList<>();
-        Scanner input = new Scanner(new File("database/city.txt"));
+        Scanner input = new Scanner(new File("src/database/city.txt"));
         String line;
         while(input.hasNextLine()) {
             line = input.nextLine();
@@ -58,8 +58,17 @@ public class City {
         return cities;
     }
 
+    @Override
+    public String toString() {
+        return "City{" +
+                "cityName='" + cityName + '\'' +
+                ", zipCode=" + zipCode +
+                ", city_id=" + city_id +
+                '}';
+    }
+
     public static void writeCity(ArrayList<City> cities) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("database/city.txt"));
+        PrintStream output = new PrintStream(new File("src/database/city.txt"));
         for (int i = 0; i < cities.size(); i++) {
             output.println(cities.get(i).toFile());
         }
