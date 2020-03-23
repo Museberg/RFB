@@ -20,6 +20,7 @@ USE `mydb` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`city` (
   `city_id` INT NOT NULL,
   `city_zipcode` INT NOT NULL,
+  `city_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`city_id`))
 ENGINE = InnoDB;
 
@@ -29,7 +30,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`household` (
   `household_id` INT NOT NULL AUTO_INCREMENT,
-  `household_adresse1` VARCHAR(45) NOT NULL,
+  `household_address` VARCHAR(45) NOT NULL,
   `city_city_id` INT NOT NULL,
   PRIMARY KEY (`household_id`),
   INDEX `fk_husstand_by1_idx` (`city_city_id` ASC) VISIBLE,
@@ -97,6 +98,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `mydb`.`workschedule`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`workschedule` (
+  `workschedule_id` INT NOT NULL,
+  `workschedule_week` VARCHAR(45) NOT NULL,
+  `workschedule_day` VARCHAR(45) NOT NULL,
+  `workschedule_hoursstart` VARCHAR(45) NOT NULL,
+  `workschedule_hoursend` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`workschedule_id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `mydb`.`employee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`employee` (
@@ -104,7 +118,22 @@ CREATE TABLE IF NOT EXISTS `mydb`.`employee` (
   `employee_firstname` VARCHAR(45) NOT NULL,
   `employee_lastname` VARCHAR(45) NOT NULL,
   `employee_phonenumber` INT NOT NULL,
-  PRIMARY KEY (`employee_id`))
+  `employee_address` VARCHAR(45) NOT NULL,
+  `workschedule_workschedule_id` INT NOT NULL,
+  `city_city_id` INT NOT NULL,
+  PRIMARY KEY (`employee_id`),
+  INDEX `fk_employee_workschedule1_idx` (`workschedule_workschedule_id` ASC) VISIBLE,
+  INDEX `fk_employee_city1_idx` (`city_city_id` ASC) VISIBLE,
+  CONSTRAINT `fk_employee_workschedule1`
+    FOREIGN KEY (`workschedule_workschedule_id`)
+    REFERENCES `mydb`.`workschedule` (`workschedule_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_employee_city1`
+    FOREIGN KEY (`city_city_id`)
+    REFERENCES `mydb`.`city` (`city_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
