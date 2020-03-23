@@ -75,6 +75,14 @@ public class Parent {
         this.parentPhoneNumber = parentPhoneNumber;
     }
 
+    @Override
+    public String toString() {
+        return "Parent: Parent id: " + getParentId() +
+                ", Parent Firstname: " + getParentFirstName() +
+                ", Parent Lastname" + getParentLastName() +
+                ", Parent Phonenumber: " + getParentPhoneNumber();
+    }
+
     public String toFile() {
         return (parentId + "," + parentFirstName + "," + parentLastName + "," + parentPhoneNumber);
     }
