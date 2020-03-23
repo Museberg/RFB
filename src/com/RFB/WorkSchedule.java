@@ -63,7 +63,7 @@ public class WorkSchedule {
 
     public static ArrayList<WorkSchedule> readFromFile() throws FileNotFoundException {
         ArrayList<WorkSchedule> schedules = new ArrayList<>();
-        Scanner input = new Scanner(new File("database/workschedule.txt"));
+        Scanner input = new Scanner(new File("Database/workschedule.txt"));
         String line;
         while(input.hasNextLine()) {
             line = input.nextLine();
@@ -79,7 +79,7 @@ public class WorkSchedule {
     }
 
     public static void writeToFile(ArrayList<WorkSchedule> schedules) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("database/workschedule.txt"));
+        PrintStream output = new PrintStream(new File("Database/workschedule.txt"));
             for (int i = 0; i < schedules.size(); i++) {
                 output.println(schedules.get(i).toFile());
             }
