@@ -46,6 +46,7 @@ public class City {
             line = input.nextLine();
             String [] lineInput = line.split(",");
             City city = new City(lineInput[0], Integer.parseInt(lineInput[1]),Integer.parseInt(lineInput[2]));
+            cities.add(city);
         }
         return cities;
     }
