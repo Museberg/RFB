@@ -1,6 +1,8 @@
 package com.RFB;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,9 +11,9 @@ public class City {
     private int zipCode;
     private int city_id;
 
-    public City(String cityName, int phoneNumber, int city_id) {
+    public City(String cityName, int zipCode, int city_id) {
         this.cityName = cityName;
-        this.zipCode = phoneNumber;
+        this.zipCode = zipCode;
         this.city_id = city_id;
     }
 
@@ -38,7 +40,12 @@ public class City {
     public void setCity_id(int city_id) {
         this.city_id = city_id;
     }
-    public static ArrayList<City> readCity(){
+
+    public String toFile(){
+        return getCityName()+","+getZipCode()+","+getCity_id();
+    }
+
+    public static ArrayList<City> readCity() throws FileNotFoundException {
         ArrayList<City> cities = new ArrayList<>();
         Scanner input = new Scanner(new File("database/city.txt"));
         String line;
@@ -49,5 +56,12 @@ public class City {
             cities.add(city);
         }
         return cities;
+    }
+
+    public static void writeCity(ArrayList<City> cities) throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File("database/city.txt"));
+        for (int i = 0; i < cities.size(); i++) {
+            output.println(cities.get(i).toFile());
+        }
     }
 }
