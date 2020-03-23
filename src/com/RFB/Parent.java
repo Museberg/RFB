@@ -27,7 +27,6 @@ public class Parent {
         String line;
         while (input.hasNextLine()) {
             line = input.nextLine();
-            line = input.nextLine();
             String[] lineInput = line.split(",");
             Parent parent = new Parent(Integer.parseInt(lineInput[0]), lineInput[1], lineInput[2], Integer.parseInt(lineInput[3]));
             parents.add(parent);
