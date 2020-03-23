@@ -1,0 +1,3 @@
+1, Frederiksberg Bredegade 13B, 3
+2, Københavnergade 2A, 2
+3, Måløv Gadevej 8A, 1

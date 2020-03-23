@@ -1,0 +1,5 @@
+1, Stol
+2, Computerskærm
+3, Marsvin
+4, Højhus
+5, Sovepose
