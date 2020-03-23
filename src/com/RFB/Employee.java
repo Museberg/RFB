@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Employee {
+    private int id;
     private String firstName;
     private String lastName;
     private int phoneNumber;
     private int city_id;
     private String address;
 
-    public Employee(String firstName, String lastName, int phoneNumber, int city_id, String address) {
+    public Employee(int id, String firstName, String lastName, int phoneNumber, int city_id, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -62,23 +63,26 @@ public class Employee {
         Scanner console = new Scanner(System.in);
         System.out.println("Now adding a new employee");
 
-        System.out.println("Type in first name");
+        System.out.print("Type in an ID for the employee: ");
+        int id = console.nextInt();
+
+        System.out.print("Type in first name: ");
         String firstName = console.next();
 
-        System.out.println("Type in last name");
+        System.out.print("Type in last name: ");
         String lastName = console.next();
 
-        System.out.println("Type in telephone number");
+        System.out.print("Type in telephone number: ");
         int phoneNumber = console.nextInt();
 
-        System.out.println("Type in city id");
+        System.out.print("Type in city id: ");
         int city_id = console.nextInt();
         console.nextLine();
 
-        System.out.println("Type in address (street name and number)");
+        System.out.print("Type in address (street name and number): ");
         String address = console.nextLine();
 
-        Employee tempEmployee = new Employee(firstName, lastName, phoneNumber, city_id, address);
+        Employee tempEmployee = new Employee(id, firstName, lastName, phoneNumber, city_id, address);
         employeeAL.add(tempEmployee);
 
 
