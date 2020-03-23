@@ -1,5 +1,9 @@
 package com.RFB;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Child {
     private int id; // Primary key
     private String firstName;
@@ -7,6 +11,9 @@ public class Child {
     private int parent_id; // Foreign key
     private int room_id; // Foreign key
     private int household_id; // Foreign key
+
+    // Used for file handling
+    private static String fileName = "src/database/children.txt";
 
 
     public Child(int id, String firstName, String lastName, int parent_id, int room_id, int household_id) {
@@ -17,8 +24,6 @@ public class Child {
         this.room_id = room_id;
         this.household_id = household_id;
     }
-
-
 
     public int getId() {
         return id;
@@ -66,5 +71,36 @@ public class Child {
 
     public void setHousehold_id(int household_id) {
         this.household_id = household_id;
+    }
+
+    // Saving all children to file
+    public static void writeToFile(ArrayList<Child> children) throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File(fileName));
+        for(Child child : children){
+            output.println(child.toFile());
+        }
+    }
+
+    // Reads all children from file and returns them in an arraylist
+    public static ArrayList<Child> readFromFile() throws FileNotFoundException {
+        ArrayList<Child> children = new ArrayList<>();
+        Scanner scan = new Scanner(new File(fileName));
+        while(scan.hasNextLine()){
+            Scanner lineScan = new Scanner(scan.nextLine());
+            lineScan.useDelimiter(", ");
+            Child child = new Child(lineScan.nextInt(), lineScan.next(), lineScan.next(), lineScan.nextInt(), lineScan.nextInt(), lineScan.nextInt());
+            children.add(child);
+        }
+        return children;
+    }
+
+    public String toString(){
+        return String.format("ID: %d%nFirst name: %s%nLast name: %s%nParent ID: %d%nRoom ID: %d%nHousehold ID: %d",
+                id, firstName, lastName, parent_id, room_id, household_id);
+    }
+
+    // Returns the child as a string with each field separated by a comma
+    private String toFile(){
+        return String.format("%d, %s, %s, %d, %d, %d", id, firstName, lastName, parent_id, room_id, household_id);
     }
 }
