@@ -1,5 +1,10 @@
 package com.RFB;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class WorkSchedule {
     private int workSchedule_id;
     private int workSchedule_week;
@@ -54,5 +59,17 @@ public class WorkSchedule {
     public void setWorkSchedule_hourEnd(double workSchedule_hourEnd) {
         this.workSchedule_hourEnd = workSchedule_hourEnd;
     }
-    
+
+    public static ArrayList<WorkSchedule> readFromFile() throws FileNotFoundException {
+        ArrayList<WorkSchedule> schedules = new ArrayList<>();
+        Scanner input = new Scanner(new File("database/workschedule.txt"));
+        String line;
+        while(input.hasNextLine()) {
+            line = input.nextLine();
+            String [] lineInput = line.split(",");
+            WorkSchedule schedule = new WorkSchedule(Integer.parseInt(lineInput[0]), Integer.parseInt(lineInput[1]), lineInput[2], Double.parseDouble(lineInput[3]), Double.parseDouble(lineInput[4]));
+            schedules.add(schedule);
+        }
+        return schedules;
+    }
 }
