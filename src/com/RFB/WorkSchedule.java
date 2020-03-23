@@ -54,4 +54,5 @@ public class WorkSchedule {
     public void setWorkSchedule_hourEnd(double workSchedule_hourEnd) {
         this.workSchedule_hourEnd = workSchedule_hourEnd;
     }
+    
 }

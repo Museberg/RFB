@@ -1,5 +1,8 @@
 package com.RFB;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Employee {
     private String firstName;
     private String lastName;
@@ -53,5 +56,32 @@ public class Employee {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public static void addEmployee(ArrayList<Employee> employeeAL){
+        Scanner console = new Scanner(System.in);
+        System.out.println("Now adding a new employee");
+
+        System.out.println("Type in first name");
+        String firstName = console.next();
+
+        System.out.println("Type in last name");
+        String lastName = console.next();
+
+        System.out.println("Type in telephone number");
+        int phoneNumber = console.nextInt();
+
+        System.out.println("Type in city id");
+        int city_id = console.nextInt();
+        console.nextLine();
+
+        System.out.println("Type in address (street name and number)");
+        String address = console.nextLine();
+
+        Employee tempEmployee = new Employee(firstName, lastName, phoneNumber, city_id, address);
+        employeeAL.add(tempEmployee);
+
+
+
     }
 }
