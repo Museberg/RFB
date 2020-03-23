@@ -104,8 +104,8 @@ public class Employee {
         return getId() + "," + getFirstName() + "," + getLastName() + "," + getPhoneNumber() + "," + getCity_id() + "," + getAddress();
     }
 
-    public static ArrayList<Employee> readEmployee(ArrayList<Employee> employeeAL) throws FileNotFoundException {
-        Scanner input = new Scanner(new File("src/database/employee.txt"));
+    public static ArrayList<Employee> readFromFile(ArrayList<Employee> employeeAL) throws FileNotFoundException {
+        Scanner input = new Scanner(new File("src/Database/employee.txt"));
         String line;
         while(input.hasNextLine()) {
             line = input.nextLine();
@@ -116,8 +116,8 @@ public class Employee {
         return employeeAL;
     }
 
-    public static void writeEmployee(ArrayList<Employee> employeeAL) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("src/database/employee.txt"));
+    public static void writeToFile(ArrayList<Employee> employeeAL) throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File("src/Database/employee.txt"));
         for (int i = 0; i < employeeAL.size(); i++) {
             output.println(employeeAL.get(i).toFile());
         }
