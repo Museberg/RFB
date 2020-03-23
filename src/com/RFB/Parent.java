@@ -77,7 +77,7 @@ public class Parent {
 
     @Override
     public String toString() {
-        return "Parent: Parent id: " + getParentId() +
+        return "Parent id: " + getParentId() +
                 ", Parent Firstname: " + getParentFirstName() +
                 ", Parent Lastname" + getParentLastName() +
                 ", Parent Phonenumber: " + getParentPhoneNumber();
