@@ -76,6 +76,7 @@ public class WorkSchedule {
 
     public String toFile() {
         return this.workSchedule_id + ", " + this.workSchedule_week + ", " + this.workSchedule_day + ", " + this.workSchedule_hourStart + ", " + this.workSchedule_hourEnd;
+    }
 
     public static void writeToFile(ArrayList<WorkSchedule> schedules) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("database/workschedule.txt"));
