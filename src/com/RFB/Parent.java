@@ -1,5 +1,11 @@
 package com.RFB;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Parent {
     private int parentId;
     private String parentFirstName;
@@ -13,6 +19,29 @@ public class Parent {
         this.parentLastName = parentLastName;
         this.parentPhoneNumber = parentPhoneNumber;
 
+    }
+
+    public static ArrayList<Parent> readParent() throws FileNotFoundException {
+        ArrayList<Parent> parents = new ArrayList<>();
+        Scanner input = new Scanner(new File("Database/parentList.txt"));
+        String line;
+        while (input.hasNextLine()) {
+            line = input.nextLine();
+            line = input.nextLine();
+            String[] lineInput = line.split(",");
+            Parent parent = new Parent(Integer.parseInt(lineInput[0]), lineInput[1], lineInput[2], Integer.parseInt(lineInput[3]));
+            parents.add(parent);
+        }
+        return parents;
+    }
+
+    public static ArrayList<Parent> writeParent() throws FileNotFoundException {
+        ArrayList<Parent> parents = new ArrayList<>();
+        PrintStream parentOutput = new PrintStream(new File("Database/parentList.txt"));
+        for (Parent p : parents) {
+            parentOutput.println(p.toFile());
+        }
+        return parents;
     }
 
     public int getParentId() {
@@ -46,4 +75,9 @@ public class Parent {
     public void setParentPhoneNumber(int parentPhoneNumber) {
         this.parentPhoneNumber = parentPhoneNumber;
     }
+
+    public String toFile() {
+        return (parentId + "," + parentFirstName + "," + parentLastName + "," + parentPhoneNumber);
+    }
+
 }
