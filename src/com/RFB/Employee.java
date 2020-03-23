@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Employee {
+
+    //Fields
     private int id;
     private String firstName;
     private String lastName;
@@ -14,6 +16,7 @@ public class Employee {
     private int city_id;
     private String address;
 
+    //Constructer
     public Employee(int id, String firstName, String lastName, int phoneNumber, int city_id, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -22,6 +25,7 @@ public class Employee {
         this.address = address;
     }
 
+    //Getters & setters
     public String getFirstName() {
         return firstName;
     }
@@ -70,6 +74,7 @@ public class Employee {
         this.id = id;
     }
 
+    //Add employee method
     public static void addEmployee(ArrayList<Employee> employeeAL){
         Scanner console = new Scanner(System.in);
         System.out.println("Now adding a new employee");
@@ -96,14 +101,18 @@ public class Employee {
         Employee tempEmployee = new Employee(id, firstName, lastName, phoneNumber, city_id, address);
         employeeAL.add(tempEmployee);
     }
+
+    //toString method
     public String toString(){
         return "Employee ID: " + id +"\nName: " + firstName + " " + lastName;
     }
 
+    //toFile Method (used in method writeToFile when saving to a file)
     public String toFile(){
         return getId() + "," + getFirstName() + "," + getLastName() + "," + getPhoneNumber() + "," + getCity_id() + "," + getAddress();
     }
 
+    //Read from file method
     public static ArrayList<Employee> readFromFile(ArrayList<Employee> employeeAL) throws FileNotFoundException {
         Scanner input = new Scanner(new File("src/Database/employee.txt"));
         String line;
@@ -116,10 +125,13 @@ public class Employee {
         return employeeAL;
     }
 
+    //Write to a file method
     public static void writeToFile(ArrayList<Employee> employeeAL) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("src/Database/employee.txt"));
         for (int i = 0; i < employeeAL.size(); i++) {
             output.println(employeeAL.get(i).toFile());
         }
     }
+
+
 }
