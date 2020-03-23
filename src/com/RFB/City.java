@@ -2,12 +2,12 @@ package com.RFB;
 
 public class City {
     private String cityName;
-    private int phoneNumber;
+    private int zipCode;
     private int city_id;
 
     public City(String cityName, int phoneNumber, int city_id) {
         this.cityName = cityName;
-        this.phoneNumber = phoneNumber;
+        this.zipCode = phoneNumber;
         this.city_id = city_id;
     }
 
@@ -19,12 +19,12 @@ public class City {
         this.cityName = cityName;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public int getZipCode() {
+        return zipCode;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setZipCode(int phoneNumber) {
+        this.zipCode = phoneNumber;
     }
 
     public int getCity_id() {
@@ -34,7 +34,9 @@ public class City {
     public void setCity_id(int city_id) {
         this.city_id = city_id;
     }
-    public void readCity(){
-
+    public City readCity(){
+        Scanner
+        City city = new City();
+        return city;
     }
 }
