@@ -13,7 +13,7 @@ public class Child {
     private int household_id; // Foreign key
 
     // Used for file handling
-    private static String fileName = "src/database/children.txt";
+    private static String fileName = "src/Database/children.txt";
 
 
     public Child(int id, String firstName, String lastName, int parent_id, int room_id, int household_id) {
