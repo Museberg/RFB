@@ -24,7 +24,7 @@ public class Menu {
         ArrayList<Household> households = Household.readFromFile();
 
         int option = -1;
-        //login();
+        login();
 
         while(option != 0){
             printOptions();
