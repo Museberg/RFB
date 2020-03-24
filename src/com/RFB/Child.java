@@ -77,18 +77,17 @@ public class Child {
     }
 
     public static Child createChild(ArrayList<Parent> parents, ArrayList<Room> rooms, ArrayList<Household> households, ArrayList<Child> children){
-        System.out.println("To create a child, we need some information. Please enter the required information when prompted");
-        System.out.println("What is the ID of the child?");
-        int id = InputHelper.getIntFromUser();
+        System.out.println("For at indmelde et barn, skal vi bruge noget information. Indtast venligst oplysninger når du bliver bedt om det");
+        int id = getLastID(children) + 1;
 
-        System.out.println("What is the first name of the child?");
+        System.out.println("Hvad er barnets fornavn?");
         String firstName = InputHelper.getStringFromUser("First name");
 
-        System.out.println("What is the last name of the child?");
+        System.out.println("Hvad er barnets efternavn?");
         String lastName = InputHelper.getStringFromUser("Last name");
 
-        System.out.println("Who is the child's parent? (primary contact person)");
-        System.out.printf("%d - Select from registered parents%n%d - Create a new parent%n", 1, 2);
+        System.out.println("Hvem er barnets forælder? (primær kontaktperson");
+        System.out.printf("%d - Vælg fra eksisterende forældre%n%d - Opret ny forælder%n", 1, 2);
         int parentID = -1;
         int option = InputHelper.getOptionFromUser(1, 2);
         if(option == 1){ // Select from already registered parents
@@ -97,38 +96,46 @@ public class Child {
                 String ls = parents.get(i).getParentLastName();
                 System.out.printf("%d - %s %s%n", i+1, fs, ls); // Adding 1 to index to look nice
             }
-            System.out.println("Please select a parent");
+            System.out.println("Vælg venligst en forælder");
             option = InputHelper.getOptionFromUser(1, parents.size() + 1);
             parentID = parents.get(option - 1).getParentId(); // Subtracting 1 from the index
         }
         else if(option == 2){ // Register new parent
-            System.out.println("Not yet implemented! Selecting parent with ID 1");
+            System.out.println("Endnu ikke implementeret. Vælger forælder med ID 1");
             parentID = 1;
         }
 
-        System.out.println("What room should the child be placed in?");
+        System.out.println("Hvilken stue skal barnet gå på?");
+        int roomID = 0;
         ArrayList<Room> availableRooms = getAvailableRooms(rooms, children, 2);
         for(int i = 0; i < availableRooms.size(); i++){
             System.out.printf("%d - %s%n", i+1, availableRooms.get(i).getRoomName());
         }
-        System.out.println("Please select a room");
-        option = InputHelper.getOptionFromUser(1, availableRooms.size() + 1);
-        int roomID = availableRooms.get(option - 1).getId();
+        if(availableRooms.size() == 0){
+            System.out.println("Der er ingen stuer tilgængelige med ledige pladser. Ønsker du at sætte barnet på venteliste?");
+            System.out.printf("%d - Ja%n%d - Nej", 1, 2);
+            option = InputHelper.getOptionFromUser(1, 2);
+        }
+        else if(availableRooms.size() > 0){
+            System.out.println("Vælg venligst en stue");
+            option = InputHelper.getOptionFromUser(1, availableRooms.size() + 1);
+            roomID = availableRooms.get(option - 1).getId();
+        }
 
-        System.out.println("In which household does the child live in?");
-        System.out.printf("%d - Select from existing households%n%d - Create new household%n", 1, 2);
+        System.out.println("I hvilken husstand bor barnet?");
+        System.out.printf("%d - Vælg fra eksisterende husstande%n%d - Lav en ny husstand%n", 1, 2);
         int householdID = -1;
         option = InputHelper.getOptionFromUser(1, 2);
         if(option == 1){ // Select from existing households
             for(int i = 0; i < households.size(); i++){
                 System.out.printf("%d - %s%n", i+1, households.get(i).getAddress());
             }
-            System.out.println("Please select a household");
+            System.out.println("Vælg venligst en husstand");
             option = InputHelper.getOptionFromUser(1, households.size() + 1);
             householdID = households.get(option - 1).getId();
         }
         else if(option == 2){ // Creating new household
-            System.out.println("Not yet implemented! Selecting household with ID 1");
+            System.out.println("Endnu ikke implementeret. Vælger husstand med ID 1");
             householdID = 1;
         }
 
@@ -166,9 +173,13 @@ public class Child {
         return children;
     }
 
+    private static int getLastID(ArrayList<Child> children){
+        return children.get(children.size() - 1).getId();
+    }
+
     @Override
     public String toString(){
-        return String.format("ID: %d%nFirst name: %s%nLast name: %s%nParent ID: %d%nRoom ID: %d%nHousehold ID: %d",
+        return String.format("ID: %d%nFornavn: %s%nEfternavn: %s%nForælder ID: %d%Stue ID: %d%Husstand ID: %d",
                 id, firstName, lastName, parent_id, room_id, household_id);
     }
 
