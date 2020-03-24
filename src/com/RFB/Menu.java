@@ -11,7 +11,7 @@ public class Menu {
         System.out.printf("%d - Indmeld barn%n", 2);
         System.out.printf("%d - Tilføj husstand%n", 3);
         System.out.printf("%d - Luk program og gem%n", 0);
-        System.out.println("Indtast dit valg: ");
+        System.out.print("Indtast dit valg: ");
     }
 
     public static void startMenu() throws FileNotFoundException {
@@ -24,7 +24,7 @@ public class Menu {
         ArrayList<Household> households = Household.readFromFile();
 
         int option = -1;
-        login();
+        //login();
 
         while(option != 0){
             printOptions();
@@ -35,7 +35,7 @@ public class Menu {
                     System.out.println("Endnu ikke implementeret!");
                     break;
                 case 2: // Add child
-                    Child child = Child.createChild(parents, rooms, households);
+                    Child child = Child.createChild(parents, rooms, households, children);
                     System.out.println(child);
                     break;
                 case 3:

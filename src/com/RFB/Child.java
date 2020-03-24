@@ -1,6 +1,7 @@
 package com.RFB;
 
 import java.io.*;
+import java.sql.Array;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -75,7 +76,7 @@ public class Child {
         this.household_id = household_id;
     }
 
-    public static Child createChild(ArrayList<Parent> parents, ArrayList<Room> rooms, ArrayList<Household> households){
+    public static Child createChild(ArrayList<Parent> parents, ArrayList<Room> rooms, ArrayList<Household> households, ArrayList<Child> children){
         System.out.println("To create a child, we need some information. Please enter the required information when prompted");
         System.out.println("What is the ID of the child?");
         int id = InputHelper.getIntFromUser();
@@ -106,12 +107,13 @@ public class Child {
         }
 
         System.out.println("What room should the child be placed in?");
-        for(int i = 0; i < rooms.size(); i++){
-            System.out.printf("%d - %s%n", i+1, rooms.get(i).getRoomName());
+        ArrayList<Room> availableRooms = getAvailableRooms(rooms, children, 2);
+        for(int i = 0; i < availableRooms.size(); i++){
+            System.out.printf("%d - %s%n", i+1, availableRooms.get(i).getRoomName());
         }
         System.out.println("Please select a room");
-        option = InputHelper.getOptionFromUser(1, rooms.size() + 1);
-        int roomID = rooms.get(option - 1).getId();
+        option = InputHelper.getOptionFromUser(1, availableRooms.size() + 1);
+        int roomID = availableRooms.get(option - 1).getId();
 
         System.out.println("In which household does the child live in?");
         System.out.printf("%d - Select from existing households%n%d - Create new household%n", 1, 2);
@@ -131,6 +133,16 @@ public class Child {
         }
 
         return new Child(id, firstName, lastName, parentID, roomID, householdID);
+    }
+
+    public static  ArrayList<Room> getAvailableRooms(ArrayList<Room> rooms, ArrayList<Child> children, int roomSize){
+        ArrayList<Room> availableRooms = new ArrayList<>();
+        for(Room room : rooms){
+            if(room.getChildrenInRoom(children) < roomSize){
+                availableRooms.add(room);
+            }
+        }
+        return availableRooms;
     }
 
     // Saving all children to file

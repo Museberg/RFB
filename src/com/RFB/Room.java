@@ -60,6 +60,16 @@ public class Room {
         return String.format("%d, %s", id, roomName);
     }
 
+    public int getChildrenInRoom(ArrayList<Child> children){
+        int childrenInRoom = 0;
+        for(Child child : children){
+            if(child.getRoom_id() == this.id){
+                childrenInRoom++;
+            }
+        }
+        return childrenInRoom;
+    }
+
     @Override
     public String toString(){
         return String.format("ID: %s%nRoom name: %s", id, roomName);
