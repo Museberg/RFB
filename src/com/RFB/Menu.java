@@ -9,7 +9,7 @@ public class Menu {
         System.out.printf("%d - Add room%n", 1);
         System.out.printf("%d - Add child%n", 2);
         System.out.printf("%d - Add household%n", 3);
-        System.out.printf("%d - Exit menu%n", 0);
+        System.out.printf("%d - Exit and save%n", 0);
     }
 
     public static void startMenu() throws FileNotFoundException {
@@ -21,27 +21,36 @@ public class Menu {
         ArrayList<Room> rooms = Room.readFromFile();
         ArrayList<Household> households = Household.readFromFile();
 
-        printOptions();
-        int option = InputHelper.getOptionFromUser(0, 3);
+        int option = -1;
 
-        switch (option){
-            case 1: // Add room
-                break;
-            case 2: // Add child
-                Child child = Child.createChild(parents, rooms, households);
-                System.out.println(child);
-                break;
-            case 0:
-                Employee.writeToFile(employees);
-                City.writeToFile(cities);
-                Parent.writeToFile(parents);
-                Child.writeToFile(children);
-                WorkSchedule.writeToFile(schedules);
-                Room.writeToFile(rooms);
-                Household.writeToFile(households);
-                System.out.println("Goodbye");
-                break;
+        while(option != 0){
+            printOptions();
+            option = InputHelper.getOptionFromUser(0, 3);
+
+            switch (option){
+                case 1: // Add room
+                    System.out.println("Not yet implemented!");
+                    break;
+                case 2: // Add child
+                    Child child = Child.createChild(parents, rooms, households);
+                    System.out.println(child);
+                    break;
+                case 3:
+                    System.out.println("Not yet implemented!");
+                    break;
+                case 0:
+                    Employee.writeToFile(employees);
+                    City.writeToFile(cities);
+                    Parent.writeToFile(parents);
+                    Child.writeToFile(children);
+                    WorkSchedule.writeToFile(schedules);
+                    Room.writeToFile(rooms);
+                    Household.writeToFile(households);
+                    System.out.println("All you work has been saved. Exiting program");
+                    break;
+            }
         }
+
     }
 
 }
