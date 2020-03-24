@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Parent {
+    // fields
     private int parentId;
     private String parentFirstName;
     private String parentLastName;
     private int parentPhoneNumber;
 
 
+    // constructor
     public Parent(int parentId, String parentFirstName, String parentLastName, int parentPhoneNumber) {
         this.parentId = parentId;
         this.parentFirstName = parentFirstName;
@@ -21,6 +23,7 @@ public class Parent {
 
     }
 
+    // readFromFile()-method
     public static ArrayList<Parent> readFromFile() throws FileNotFoundException {
         ArrayList<Parent> parents = new ArrayList<>();
         Scanner input = new Scanner(new File("src/Database/parentList.txt"));
@@ -34,6 +37,7 @@ public class Parent {
         return parents;
     }
 
+    // writeToFile()-method
     public static void writeToFile(ArrayList<Parent> parents) throws FileNotFoundException {
         PrintStream parentOutput = new PrintStream(new File("src/Database/parentList.txt"));
         for (Parent p : parents) {
@@ -41,6 +45,7 @@ public class Parent {
         }
     }
 
+    // getters & setters
     public int getParentId() {
         return parentId;
     }
@@ -73,6 +78,7 @@ public class Parent {
         this.parentPhoneNumber = parentPhoneNumber;
     }
 
+    // toString()-method
     @Override
     public String toString() {
         return "Parent id: " + getParentId() +
@@ -81,6 +87,7 @@ public class Parent {
                 ", Parent Phonenumber: " + getParentPhoneNumber();
     }
 
+    // toFile()-method
     public String toFile() {
         return (parentId + "," + parentFirstName + "," + parentLastName + "," + parentPhoneNumber);
     }
