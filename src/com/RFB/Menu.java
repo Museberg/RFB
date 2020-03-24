@@ -1,5 +1,6 @@
 package com.RFB;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Menu {
@@ -11,8 +12,15 @@ public class Menu {
         System.out.printf("%d - Exit menu%n", 0);
     }
 
-    public static void startMenu(ArrayList<Employee> employees, ArrayList<City> cities, ArrayList<Parent> parents, ArrayList<Child> children,
-                                 ArrayList<WorkSchedule> schedules, ArrayList<Room> rooms, ArrayList<Household> households){
+    public static void startMenu() throws FileNotFoundException {
+        ArrayList<Employee> employees = Employee.readFromFile();
+        ArrayList<City> cities = City.readFromFile();
+        ArrayList<Parent> parents = Parent.readFromFile();
+        ArrayList<Child> children = Child.readFromFile();
+        ArrayList<WorkSchedule> schedules = WorkSchedule.readFromFile();
+        ArrayList<Room> rooms = Room.readFromFile();
+        ArrayList<Household> households = Household.readFromFile();
+
         printOptions();
         int option = InputHelper.getOptionFromUser(0, 3);
 
@@ -22,6 +30,16 @@ public class Menu {
             case 2: // Add child
                 Child child = Child.createChild(parents, rooms, households);
                 System.out.println(child);
+                break;
+            case 0:
+                Employee.writeToFile(employees);
+                City.writeToFile(cities);
+                Parent.writeToFile(parents);
+                Child.writeToFile(children);
+                WorkSchedule.writeToFile(schedules);
+                Room.writeToFile(rooms);
+                Household.writeToFile(households);
+                System.out.println("Goodbye");
                 break;
         }
     }

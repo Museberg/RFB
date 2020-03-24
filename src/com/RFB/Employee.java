@@ -113,9 +113,10 @@ public class Employee {
     }
 
     //Read from file method
-    public static ArrayList<Employee> readFromFile(ArrayList<Employee> employeeAL) throws FileNotFoundException {
+    public static ArrayList<Employee> readFromFile() throws FileNotFoundException {
         Scanner input = new Scanner(new File("src/Database/employee.txt"));
         String line;
+        ArrayList<Employee> employeeAL = new ArrayList<>();
         while(input.hasNextLine()) {
             line = input.nextLine();
             String [] lineInput = line.split(",");

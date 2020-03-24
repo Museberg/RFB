@@ -7,6 +7,8 @@ public class Main {
 
 
     public static void main(String[] args) throws FileNotFoundException {
+        Menu.startMenu();
+        /*
         ArrayList<Employee> employees = new ArrayList<>();
         ArrayList<City> cities = new ArrayList<>();
         ArrayList<Parent> parents = new ArrayList<>();
@@ -17,10 +19,11 @@ public class Main {
         readFromFile(employees, cities, parents, children, schedules, rooms, households);
         writeToFile(employees, cities, parents, children, schedules, rooms, households);
         System.out.println("Main parents size " + parents.size());
+        */
     }
 
     public static void readFromFile(ArrayList<Employee> employees, ArrayList<City> cities, ArrayList<Parent> parents, ArrayList<Child> children, ArrayList<WorkSchedule> schedules, ArrayList<Room> rooms, ArrayList<Household> households) throws FileNotFoundException {
-
+        /*
 //      employees = Employee.readFromFile();
         cities = City.readFromFile();
         parents = Parent.readFromFile();
@@ -31,7 +34,7 @@ public class Main {
 //      employeeAL = Employee.readEmployee();
         System.out.println("Read from file parents size " + parents.size());
         //Menu.startMenu(employees, cities, parents, children, schedules, rooms, households);
-
+        */
     }
 
     public static void writeToFile(ArrayList<Employee> employees, ArrayList<City> cities, ArrayList<Parent> parents, ArrayList<Child> children, ArrayList<WorkSchedule> schedules, ArrayList<Room> rooms, ArrayList<Household> households) throws FileNotFoundException {

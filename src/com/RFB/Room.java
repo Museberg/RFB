@@ -36,7 +36,7 @@ public class Room {
         this.roomName = roomName;
     }
 
-    public void writeToFile(ArrayList<Room> rooms) throws FileNotFoundException {
+    public static void writeToFile(ArrayList<Room> rooms) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File(fileName));
         for(Room room : rooms){
             output.println(room.toFile());
