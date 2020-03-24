@@ -80,7 +80,7 @@ public class Employee {
         System.out.println("Now adding a new employee");
 
         System.out.print("Type in an ID for the employee: ");
-        int id = console.nextInt();
+        int id = InputHelper.getIntFromUser();
 
         System.out.print("Type in first name: ");
         String firstName = console.next();
@@ -89,7 +89,7 @@ public class Employee {
         String lastName = console.next();
 
         System.out.print("Type in telephone number: ");
-        int phoneNumber = console.nextInt();
+        int phoneNumber = InputHelper.getPhoneNumberFromUser();
 
         System.out.print("Type in city id: ");
         int city_id = console.nextInt();
