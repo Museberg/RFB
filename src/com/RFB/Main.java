@@ -16,6 +16,7 @@ public class Main {
         ArrayList<Household> households = new ArrayList<>();
         readFromFile(employees, cities, parents, children, schedules, rooms, households);
         writeToFile(employees, cities, parents, children, schedules, rooms, households);
+        System.out.println("Main parents size " + parents.size());
     }
 
     public static void readFromFile(ArrayList<Employee> employees, ArrayList<City> cities, ArrayList<Parent> parents, ArrayList<Child> children, ArrayList<WorkSchedule> schedules, ArrayList<Room> rooms, ArrayList<Household> households) throws FileNotFoundException {
@@ -28,8 +29,8 @@ public class Main {
         rooms = Room.readFromFile();
         households = Household.readFromFile();
 //      employeeAL = Employee.readEmployee();
-
-        Menu.startMenu(employees, cities, parents, children, schedules, rooms, households);
+        System.out.println("Read from file parents size " + parents.size());
+        //Menu.startMenu(employees, cities, parents, children, schedules, rooms, households);
 
     }
 

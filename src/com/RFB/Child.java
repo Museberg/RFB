@@ -77,7 +77,7 @@ public class Child {
 
     public static Child createChild(ArrayList<Parent> parents, ArrayList<Room> rooms, ArrayList<Household> households){
         System.out.println("To create a child, we need some information. Please enter the required information when prompted");
-        System.out.println("What is the ID of the child? *Only for testing*");
+        System.out.println("What is the ID of the child?");
         int id = InputHelper.getIntFromUser();
 
         System.out.println("What is the first name of the child?");
