@@ -66,7 +66,7 @@ public class Menu {
             System.out.println("Brugernavn eller kodeord forkert. Prøv venligst igen");
             System.out.println("Indtast venligst brugernavn");
             username = input.next();
-            System.out.println("Indtast venligts kodeord");
+            System.out.println("Indtast venligst kodeord");
             password = input.next();
         }
     }
