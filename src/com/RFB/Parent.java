@@ -34,13 +34,11 @@ public class Parent {
         return parents;
     }
 
-    public static ArrayList<Parent> writeToFile() throws FileNotFoundException {
-        ArrayList<Parent> parents = new ArrayList<>();
+    public static void writeToFile(ArrayList<Parent> parents) throws FileNotFoundException {
         PrintStream parentOutput = new PrintStream(new File("src/Database/parentList.txt"));
         for (Parent p : parents) {
             parentOutput.println(p.toFile());
         }
-        return parents;
     }
 
     public int getParentId() {
