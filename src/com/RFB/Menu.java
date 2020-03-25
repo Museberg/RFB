@@ -10,6 +10,7 @@ public class Menu {
         System.out.printf("%d - Tilføj stue%n", 1);
         System.out.printf("%d - Indmeld barn%n", 2);
         System.out.printf("%d - Tilføj husstand%n", 3);
+        System.out.printf("%d - Tilføj medarbejder%n", 4);
         System.out.printf("%d - Luk program og gem%n", 0);
         System.out.print("Indtast dit valg: ");
     }
@@ -28,7 +29,7 @@ public class Menu {
 
         while(option != 0){
             printOptions();
-            option = InputHelper.getOptionFromUser(0, 3);
+            option = InputHelper.getOptionFromUser(0, 4);
 
             switch (option){
                 case 1: // Add room
@@ -40,6 +41,9 @@ public class Menu {
                     break;
                 case 3:
                     System.out.println("Endnu ikke implementeret!");
+                    break;
+                case 4:
+                    Employee.addEmployee(employees);
                     break;
                 case 0:
                     Employee.writeToFile(employees);
