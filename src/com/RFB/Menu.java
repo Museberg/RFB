@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private static void printOptions(){
+    private static void printOptions() {
         System.out.printf("%d - Tilføj stue%n", 1);
         System.out.printf("%d - Indmeld barn%n", 2);
         System.out.printf("%d - Tilføj husstand%n", 3);
@@ -27,11 +27,11 @@ public class Menu {
         int option = -1;
         login();
 
-        while(option != 0){
+        while (option != 0) {
             printOptions();
             option = InputHelper.getOptionFromUser(0, 4);
 
-            switch (option){
+            switch (option) {
                 case 1: // Add room
                     System.out.println("Endnu ikke implementeret!");
                     break;
@@ -59,14 +59,14 @@ public class Menu {
         }
     }
 
-    private static void login(){
+    private static void login() {
         Scanner input = new Scanner(System.in);
         System.out.println("Indtast venligst brugernavn");
         String username = input.next();
         System.out.println("Indtast venligts kodeord");
         String password = input.next();
 
-        while(!username.equals("admin") || !password.equals("admin")){
+        while (!username.equals("admin") || !password.equals("admin")) {
             System.out.println("Brugernavn eller kodeord forkert. Prøv venligst igen");
             System.out.println("Indtast venligst brugernavn");
             username = input.next();
