@@ -25,6 +25,10 @@ public class Employee {
         this.address = address;
     }
 
+    // Used for file handling
+    private static String fs = System.getProperty("file.separator"); // File separator
+    private static String fileName = "src" + fs + "Database" + fs + "employee.txt";
+
     //Getters & setters
     public String getFirstName() {
         return firstName;
@@ -75,7 +79,7 @@ public class Employee {
     }
 
     //Add employee method
-    public static void addEmployee(ArrayList<Employee> employeeAL){
+    public static void addEmployee(ArrayList<Employee> employees){
         Scanner console = new Scanner(System.in);
         System.out.println("Now adding a new employee");
 
@@ -99,7 +103,7 @@ public class Employee {
         String address = console.nextLine();
 
         Employee tempEmployee = new Employee(id, firstName, lastName, phoneNumber, city_id, address);
-        employeeAL.add(tempEmployee);
+        employees.add(tempEmployee);
     }
 
     //toString method
@@ -114,7 +118,7 @@ public class Employee {
 
     //Read from file method
     public static ArrayList<Employee> readFromFile() throws FileNotFoundException {
-        Scanner input = new Scanner(new File("src/Database/employee.txt"));
+        Scanner input = new Scanner(new File(fileName));
         String line;
         ArrayList<Employee> employeeAL = new ArrayList<>();
         while(input.hasNextLine()) {
@@ -127,10 +131,10 @@ public class Employee {
     }
 
     //Write to a file method
-    public static void writeToFile(ArrayList<Employee> employeeAL) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("src/Database/employee.txt"));
-        for (int i = 0; i < employeeAL.size(); i++) {
-            output.println(employeeAL.get(i).toFile());
+    public static void writeToFile(ArrayList<Employee> employees) throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File(fileName));
+        for (int i = 0; i < employees.size(); i++) {
+            output.println(employees.get(i).toFile());
         }
     }
 
