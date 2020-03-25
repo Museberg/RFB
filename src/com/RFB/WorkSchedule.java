@@ -6,6 +6,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Fields
 public class WorkSchedule {
     private int workSchedule_id;
     private int workSchedule_week;
@@ -13,6 +14,7 @@ public class WorkSchedule {
     private String workSchedule_hourStart;
     private String workSchedule_hourEnd;
 
+    // Constructor
     public WorkSchedule(int workSchedule_id, int workSchedule_week, String workSchedule_day, String workSchedule_hourStart, String workSchedule_hourEnd) {
         this.workSchedule_id = workSchedule_id;
         this.workSchedule_week = workSchedule_week;
@@ -20,7 +22,7 @@ public class WorkSchedule {
         this.workSchedule_hourStart = workSchedule_hourStart;
         this.workSchedule_hourEnd = workSchedule_hourEnd;
     }
-
+    // Getters & Setters
     public int getWorkSchedule_id() {
         return workSchedule_id;
     }
@@ -61,6 +63,7 @@ public class WorkSchedule {
         this.workSchedule_hourEnd = workSchedule_hourEnd;
     }
 
+    // Reads every line in txt workschedule, and adds to arraylist
     public static ArrayList<WorkSchedule> readFromFile() throws FileNotFoundException {
         ArrayList<WorkSchedule> schedules = new ArrayList<>();
         String bs = System.getProperty("file.separator");
@@ -75,10 +78,12 @@ public class WorkSchedule {
         return schedules;
     }
 
+    // Format of how it is printed to the txt file
     public String toFile() {
         return this.workSchedule_id + "," + this.workSchedule_week + "," + this.workSchedule_day + "," + this.workSchedule_hourStart + "," + this.workSchedule_hourEnd;
     }
 
+    // Saves/writes the objects in the arraylist to the text file, by traversing through it
     public static void writeToFile(ArrayList<WorkSchedule> schedules) throws FileNotFoundException {
         String bs = System.getProperty("file.separator");
         PrintStream output = new PrintStream(new File("src"+bs+"Database"+bs+"workschedule.txt"));
@@ -87,6 +92,7 @@ public class WorkSchedule {
             }
     }
 
+    // toString override
     @Override
     public String toString(){
         return String.format("ID: %d%nWeek: %d%nDay: %s%nShift start: %s%nShift end: %s%n",
