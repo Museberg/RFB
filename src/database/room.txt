@@ -1,3 +1,4 @@
+0, Venteliste
 1, Stol
 2, Computerskærm
 3, Marsvin
