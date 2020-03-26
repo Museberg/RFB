@@ -32,7 +32,9 @@ public class Menu {
         ArrayList<WorkSchedule> schedules = new ArrayList<>();
         WorkSchedule.readFromFile(schedules);
         ArrayList<Room> rooms = Room.readFromFile();
-        ArrayList<Household> households = Household.readFromFile();
+        //ArrayList<Household> households = Household.readFromFile();
+        ArrayList<Household> households = new ArrayList<>();
+        Household.readFromFile(households);
 
         int option = -1;
         login();

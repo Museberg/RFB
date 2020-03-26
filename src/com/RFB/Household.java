@@ -43,17 +43,21 @@ public class Household {
     }
 
     // Reads all the households from file
-    public static ArrayList<Household> readFromFile() throws FileNotFoundException {
-        ArrayList<Household> households = new ArrayList<>();
-        Scanner scan = new Scanner(new File(fileName));
-        // Iterates thorugh all the lines and parses the tokens
-        while (scan.hasNextLine()) {
-            Scanner lineScan = new Scanner(scan.nextLine());
-            lineScan.useDelimiter(", ");
-            Household household = new Household(lineScan.nextInt(), lineScan.next(), lineScan.nextInt());
-            households.add(household);
+    public static void readFromFile(ArrayList<Household> households) {
+        try {
+            Scanner scan = new Scanner(new File(fileName));
+            // Iterates thorugh all the lines and parses the tokens
+            while (scan.hasNextLine()) {
+                Scanner lineScan = new Scanner(scan.nextLine());
+                lineScan.useDelimiter(", ");
+                Household household = new Household(lineScan.nextInt(), lineScan.next(), lineScan.nextInt());
+                households.add(household);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
-        return households;
     }
 
     // Writes all the households to file on a separate line
