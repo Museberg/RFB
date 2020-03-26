@@ -34,10 +34,12 @@ public class Parent {
                 Parent parent = new Parent(Integer.parseInt(lineInput[0]), lineInput[1], lineInput[2], Integer.parseInt(lineInput[3]));
                 parents.add(parent);
             }
-        }
-        catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
+
     }
 
     // writeToFile()-method
