@@ -20,7 +20,6 @@ public class Parent {
         this.parentFirstName = parentFirstName;
         this.parentLastName = parentLastName;
         this.parentPhoneNumber = parentPhoneNumber;
-
     }
 
     // readFromFile()-method

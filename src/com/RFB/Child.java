@@ -18,6 +18,7 @@ public class Child {
     private int household_id; // Foreign key
 
 
+    // Constructor
     public Child(int id, String firstName, String lastName, int parent_id, int room_id, int household_id) {
         this.id = id;
         this.firstName = firstName;
@@ -26,7 +27,45 @@ public class Child {
         this.room_id = room_id;
         this.household_id = household_id;
     }
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public int getParent_id() {
+        return parent_id;
+    }
+    public void setParent_id(int parent_id) {
+        this.parent_id = parent_id;
+    }
+    public int getRoom_id() {
+        return room_id;
+    }
+    public void setRoom_id(int room_id) {
+        this.room_id = room_id;
+    }
+    public int getHousehold_id() {
+        return household_id;
+    }
+    public void setHousehold_id(int household_id) {
+        this.household_id = household_id;
+    }
 
+    // Lets the user create a child by prompting them for the required information
     public static Child createChild(ArrayList<Parent> parents, ArrayList<Room> rooms, ArrayList<Household> households, ArrayList<Child> children) {
         System.out.println("For at indmelde et barn, skal vi bruge noget information. Indtast venligst oplysninger når du bliver bedt om det");
         int id = getLastID(children) + 1;
@@ -65,6 +104,13 @@ public class Child {
             System.out.println("Der er ingen stuer tilgængelige med ledige pladser. Ønsker du at sætte barnet på venteliste?");
             System.out.printf("%d - Ja%n%d - Nej", 1, 2);
             option = InputHelper.getOptionFromUser(1, 2);
+            if(option == 1){ // Adding child to waitlist
+                roomID = 0;
+            }
+            else{ // Aborting creation of child
+                System.out.println("Afbryder indmelding af barn");
+                return null;
+            }
         } else if (availableRooms.size() > 0) {
             System.out.println("Vælg venligst en stue");
             option = InputHelper.getOptionFromUser(1, availableRooms.size() + 1);
@@ -90,6 +136,7 @@ public class Child {
         return new Child(id, firstName, lastName, parentID, roomID, householdID);
     }
 
+    // Iterates through each room and returns a list of rooms with at least 1 spot available
     public static ArrayList<Room> getAvailableRooms(ArrayList<Room> rooms, ArrayList<Child> children, int roomSize) {
         ArrayList<Room> availableRooms = new ArrayList<>();
         for (Room room : rooms) {
@@ -112,6 +159,7 @@ public class Child {
     public static ArrayList<Child> readFromFile() throws FileNotFoundException {
         ArrayList<Child> children = new ArrayList<>();
         Scanner scan = new Scanner(new File(fileName));
+        // Iterates through each line and parses the tokens
         while (scan.hasNextLine()) {
             Scanner lineScan = new Scanner(scan.nextLine());
             lineScan.useDelimiter(", ");
@@ -121,56 +169,9 @@ public class Child {
         return children;
     }
 
+    // Returns the last issued ID for child
     private static int getLastID(ArrayList<Child> children) {
         return children.get(children.size() - 1).getId();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getParent_id() {
-        return parent_id;
-    }
-
-    public void setParent_id(int parent_id) {
-        this.parent_id = parent_id;
-    }
-
-    public int getRoom_id() {
-        return room_id;
-    }
-
-    public void setRoom_id(int room_id) {
-        this.room_id = room_id;
-    }
-
-    public int getHousehold_id() {
-        return household_id;
-    }
-
-    public void setHousehold_id(int household_id) {
-        this.household_id = household_id;
     }
 
     @Override

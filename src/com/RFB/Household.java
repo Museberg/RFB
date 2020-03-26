@@ -14,15 +14,39 @@ public class Household {
     private String address;
     private int city_id; // Foreign key
 
+
+    // Constructor
     public Household(int id, String address, int city_id) {
         this.id = id;
         this.address = address;
         this.city_id = city_id;
     }
 
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public int getCity_id() {
+        return city_id;
+    }
+    public void setCity_id(int city_id) {
+        this.city_id = city_id;
+    }
+
+    // Reads all the households from file
     public static ArrayList<Household> readFromFile() throws FileNotFoundException {
         ArrayList<Household> households = new ArrayList<>();
         Scanner scan = new Scanner(new File(fileName));
+        // Iterates thorugh all the lines and parses the tokens
         while (scan.hasNextLine()) {
             Scanner lineScan = new Scanner(scan.nextLine());
             lineScan.useDelimiter(", ");
@@ -32,35 +56,12 @@ public class Household {
         return households;
     }
 
+    // Writes all the households to file on a separate line
     public static void writeToFile(ArrayList<Household> households) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File(fileName));
         for (Household household : households) {
             output.println(household.toFile());
         }
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public int getCity_id() {
-        return city_id;
-    }
-
-    public void setCity_id(int city_id) {
-        this.city_id = city_id;
     }
 
     // Used for saving household to file

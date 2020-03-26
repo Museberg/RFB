@@ -37,7 +37,9 @@ public class Menu {
                     break;
                 case 2: // Add child
                     Child child = Child.createChild(parents, rooms, households, children);
-                    System.out.println(child);
+                    if(child != null){ // If null, creation was cancelled due to no available rooms
+                        children.add(child);
+                    }
                     break;
                 case 3:
                     System.out.println("Endnu ikke implementeret!");
