@@ -58,17 +58,22 @@ public class Employee {
     }
 
     //Read from file method
-    public static ArrayList<Employee> readFromFile() throws FileNotFoundException {
-        Scanner input = new Scanner(new File(fileName));
-        String line;
-        ArrayList<Employee> employeeAL = new ArrayList<>();
-        while (input.hasNextLine()) {
-            line = input.nextLine();
-            String[] lineInput = line.split(",");
-            Employee tempEmployee = new Employee(Integer.parseInt(lineInput[0]), lineInput[1], lineInput[2], Integer.parseInt(lineInput[3]), Integer.parseInt(lineInput[4]), lineInput[5]);
-            employeeAL.add(tempEmployee);
+    public static void readFromFile(ArrayList<Employee> eployees) {
+        try {
+            Scanner input = new Scanner(new File(fileName));
+            String line;
+            ArrayList<Employee> employeeAL = new ArrayList<>();
+            while (input.hasNextLine()) {
+                line = input.nextLine();
+                String[] lineInput = line.split(",");
+                Employee tempEmployee = new Employee(Integer.parseInt(lineInput[0]), lineInput[1], lineInput[2], Integer.parseInt(lineInput[3]), Integer.parseInt(lineInput[4]), lineInput[5]);
+                employeeAL.add(tempEmployee);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
-        return employeeAL;
     }
 
     //Write to a file method
