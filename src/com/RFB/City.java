@@ -19,17 +19,21 @@ public class City {
     }
 
     // Method that reads from city.txt and populates the arrayList with City objects
-    public static ArrayList<City> readFromFile() throws FileNotFoundException {
-        ArrayList<City> cities = new ArrayList<>();
-        Scanner input = new Scanner(new File("src/Database/city.txt"));
-        String line;
-        while (input.hasNextLine()) {
-            line = input.nextLine();
-            String[] lineInput = line.split(",");
-            City city = new City(lineInput[0], Integer.parseInt(lineInput[1]), Integer.parseInt(lineInput[2]));
-            cities.add(city);
+    public static void readFromFile(ArrayList<City> cities) {
+        try {
+            Scanner input = new Scanner(new File("src/Database/city.txt"));
+            String line;
+            while (input.hasNextLine()) {
+                line = input.nextLine();
+                String[] lineInput = line.split(",");
+                City city = new City(lineInput[0], Integer.parseInt(lineInput[1]), Integer.parseInt(lineInput[2]));
+                cities.add(city);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
-        return cities;
     }
     // Method for saving all City objects to city.txt
     public static void writeToFile(ArrayList<City> cities) throws FileNotFoundException {
