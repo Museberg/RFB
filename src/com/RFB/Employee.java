@@ -8,9 +8,10 @@ import java.util.Scanner;
 
 public class Employee {
 
-    // Used for file handling
+    // Bliver brugt i metoderne writeToFile og readFromFile når et txt skal oprettes. fs vil enten være / eller \ alt efter om det er mac eller windows
     private static String fs = System.getProperty("file.separator"); // File separator
     private static String fileName = "src" + fs + "Database" + fs + "employee.txt";
+
     //Fields
     private int id;
     private String firstName;
@@ -18,6 +19,7 @@ public class Employee {
     private int phoneNumber;
     private int city_id;
     private String address;
+
     //Constructer
     public Employee(int id, String firstName, String lastName, int phoneNumber, int city_id, String address) {
         this.firstName = firstName;
@@ -131,7 +133,7 @@ public class Employee {
         return "Employee ID: " + id + "\nName: " + firstName + " " + lastName;
     }
 
-    //toFile Method (used in method writeToFile when saving to a file)
+    //toFile Method (used in method writeToFile when saving to a file. Seperates each field with a comma)
     public String toFile() {
         return getId() + "," + getFirstName() + "," + getLastName() + "," + getPhoneNumber() + "," + getCity_id() + "," + getAddress();
     }
