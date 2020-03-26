@@ -11,14 +11,14 @@ public class City {
     private int zipCode;
     private int city_id;
 
-//    Constructor
+    // Constructor
     public City(String cityName, int zipCode, int city_id) {
         this.cityName = cityName;
         this.zipCode = zipCode;
         this.city_id = city_id;
     }
 
-//    Method that reads from city.txt and populates the arrayList with City objects
+    // Method that reads from city.txt and populates the arrayList with City objects
     public static ArrayList<City> readFromFile() throws FileNotFoundException {
         ArrayList<City> cities = new ArrayList<>();
         Scanner input = new Scanner(new File("src/Database/city.txt"));
@@ -31,8 +31,7 @@ public class City {
         }
         return cities;
     }
-
-//      Method for saving all City objects to city.txt
+    // Method for saving all City objects to city.txt
     public static void writeToFile(ArrayList<City> cities) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("src/Database/city.txt"));
         for (int i = 0; i < cities.size(); i++) {
@@ -40,7 +39,7 @@ public class City {
         }
     }
 
-//    Getters and Setters
+    //  Getters and Setters
     public String getCityName() {
         return cityName;
     }
@@ -65,12 +64,12 @@ public class City {
         this.city_id = city_id;
     }
 
-//    toFile method is used by writeToFile for ease of use when saving
+    // toFile method is used by writeToFile for ease of use when saving
     public String toFile() {
         return getCityName() + "," + getZipCode() + "," + getCity_id();
     }
 
-//    a toString method
+    // a toString method
     @Override
     public String toString() {
         return "ID: " + city_id + "\nCity: " + cityName + ", " + zipCode;
