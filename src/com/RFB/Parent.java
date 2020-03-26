@@ -24,7 +24,9 @@ public class Parent {
 
     // readFromFile()-method
     public static ArrayList<Parent> readFromFile() throws FileNotFoundException {
+        // Creates an ArrayList
         ArrayList<Parent> parents = new ArrayList<>();
+        // Creates a Scanner that scans a file
         Scanner input = new Scanner(new File("src/Database/parentList.txt"));
         String line;
         while (input.hasNextLine()) {
@@ -38,6 +40,7 @@ public class Parent {
 
     // writeToFile()-method
     public static void writeToFile(ArrayList<Parent> parents) throws FileNotFoundException {
+        // Creates a PrintStream that prints to a file
         PrintStream parentOutput = new PrintStream(new File("src/Database/parentList.txt"));
         for (Parent p : parents) {
             parentOutput.println(p.toFile());
