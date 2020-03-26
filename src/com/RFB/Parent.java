@@ -78,7 +78,7 @@ public class Parent {
         this.parentPhoneNumber = parentPhoneNumber;
     }
 
-    // toString()-method
+    // toString()-method - Formats the variables into an easily readable String
     @Override
     public String toString() {
         return "Parent id: " + getParentId() +
