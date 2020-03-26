@@ -156,17 +156,21 @@ public class Child {
     }
 
     // Reads all children from file and returns them in an arraylist
-    public static ArrayList<Child> readFromFile() throws FileNotFoundException {
-        ArrayList<Child> children = new ArrayList<>();
-        Scanner scan = new Scanner(new File(fileName));
-        // Iterates through each line and parses the tokens
-        while (scan.hasNextLine()) {
-            Scanner lineScan = new Scanner(scan.nextLine());
-            lineScan.useDelimiter(", ");
-            Child child = new Child(lineScan.nextInt(), lineScan.next(), lineScan.next(), lineScan.nextInt(), lineScan.nextInt(), lineScan.nextInt());
-            children.add(child);
+    public static void readFromFile(ArrayList<Child> children) {
+        try {
+            Scanner scan = new Scanner(new File(fileName));
+            // Iterates through each line and parses the tokens
+            while (scan.hasNextLine()) {
+                Scanner lineScan = new Scanner(scan.nextLine());
+                lineScan.useDelimiter(", ");
+                Child child = new Child(lineScan.nextInt(), lineScan.next(), lineScan.next(), lineScan.nextInt(), lineScan.nextInt(), lineScan.nextInt());
+                children.add(child);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
-        return children;
     }
 
     // Returns the last issued ID for child

@@ -21,7 +21,9 @@ public class Menu {
         //ArrayList<Parent> parents = Parent.readFromFile(parents);
         ArrayList<Parent> parents = new ArrayList<>();
         Parent.readFromFile(parents);
-        ArrayList<Child> children = Child.readFromFile();
+        //ArrayList<Child> children = Child.readFromFile();
+        ArrayList<Child> children = new ArrayList<>();
+        Child.readFromFile(children);
         ArrayList<WorkSchedule> schedules = WorkSchedule.readFromFile();
         ArrayList<Room> rooms = Room.readFromFile();
         ArrayList<Household> households = Household.readFromFile();
