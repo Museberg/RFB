@@ -4,3 +4,4 @@
 3, Marsvin
 4, Højhus
 5, Sovepose
+6, Tastatur
