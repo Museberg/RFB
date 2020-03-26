@@ -24,18 +24,22 @@ public class WorkSchedule {
     }
 
     // Reads every line in txt workschedule, and adds to arraylist
-    public static ArrayList<WorkSchedule> readFromFile() throws FileNotFoundException {
-        ArrayList<WorkSchedule> schedules = new ArrayList<>();
-        String bs = System.getProperty("file.separator"); // separates with either / or \ depending on what os its on
-        Scanner input = new Scanner(new File("src" + bs + "Database" + bs + "workschedule.txt"));
-        String line;
-        while (input.hasNextLine()) {
-            line = input.nextLine();
-            String[] lineInput = line.split(",");  // Splits at every komma, and ads ever spot as a spot in the string array
-            WorkSchedule schedule = new WorkSchedule(Integer.parseInt(lineInput[0]), Integer.parseInt(lineInput[1]), lineInput[2], lineInput[3], lineInput[4]);
-            schedules.add(schedule);
+    public static void readFromFile(ArrayList<WorkSchedule> schedules) {
+        try {
+            String bs = System.getProperty("file.separator"); // separates with either / or \ depending on what os its on
+            Scanner input = new Scanner(new File("src" + bs + "Database" + bs + "workschedule.txt"));
+            String line;
+            while (input.hasNextLine()) {
+                line = input.nextLine();
+                String[] lineInput = line.split(",");  // Splits at every komma, and ads ever spot as a spot in the string array
+                WorkSchedule schedule = new WorkSchedule(Integer.parseInt(lineInput[0]), Integer.parseInt(lineInput[1]), lineInput[2], lineInput[3], lineInput[4]);
+                schedules.add(schedule);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
-        return schedules;
     }
 
     // Saves/writes the objects in the arraylist to the text file, by traversing through it
