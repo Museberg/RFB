@@ -41,17 +41,21 @@ public class Room {
     }
 
     // Reads all rooms from the file and returns them as an arraylist
-    public static ArrayList<Room> readFromFile() throws FileNotFoundException {
-        ArrayList<Room> rooms = new ArrayList<>();
-        Scanner scan = new Scanner(new File(fileName));
-        // Iterates through each line and parses the tokens
-        while (scan.hasNextLine()) {
-            Scanner lineScan = new Scanner(scan.nextLine());
-            lineScan.useDelimiter(", ");
-            Room room = new Room(lineScan.nextInt(), lineScan.next());
-            rooms.add(room);
+    public static void readFromFile(ArrayList<Room> rooms) {
+        try {
+            Scanner scan = new Scanner(new File(fileName));
+            // Iterates through each line and parses the tokens
+            while (scan.hasNextLine()) {
+                Scanner lineScan = new Scanner(scan.nextLine());
+                lineScan.useDelimiter(", ");
+                Room room = new Room(lineScan.nextInt(), lineScan.next());
+                rooms.add(room);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
-        return rooms;
     }
 
     // Used to save the room to a file
