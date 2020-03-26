@@ -18,7 +18,9 @@ public class Menu {
     public static void startMenu() throws FileNotFoundException {
         ArrayList<Employee> employees = Employee.readFromFile();
         ArrayList<City> cities = City.readFromFile();
-        ArrayList<Parent> parents = Parent.readFromFile();
+        //ArrayList<Parent> parents = Parent.readFromFile(parents);
+        ArrayList<Parent> parents = new ArrayList<>();
+        Parent.readFromFile(parents);
         ArrayList<Child> children = Child.readFromFile();
         ArrayList<WorkSchedule> schedules = WorkSchedule.readFromFile();
         ArrayList<Room> rooms = Room.readFromFile();

@@ -23,19 +23,21 @@ public class Parent {
     }
 
     // readFromFile()-method
-    public static ArrayList<Parent> readFromFile() throws FileNotFoundException {
-        // Creates an ArrayList
-        ArrayList<Parent> parents = new ArrayList<>();
-        // Creates a Scanner that scans a file
-        Scanner input = new Scanner(new File("src/Database/parentList.txt"));
-        String line;
-        while (input.hasNextLine()) {
-            line = input.nextLine();
-            String[] lineInput = line.split(",");
-            Parent parent = new Parent(Integer.parseInt(lineInput[0]), lineInput[1], lineInput[2], Integer.parseInt(lineInput[3]));
-            parents.add(parent);
+    public static void readFromFile(ArrayList<Parent> parents) {
+        try {
+            // Creates a Scanner that scans a file
+            Scanner input = new Scanner(new File("src/Database/parentList.txt"));
+            String line;
+            while (input.hasNextLine()) {
+                line = input.nextLine();
+                String[] lineInput = line.split(",");
+                Parent parent = new Parent(Integer.parseInt(lineInput[0]), lineInput[1], lineInput[2], Integer.parseInt(lineInput[3]));
+                parents.add(parent);
+            }
         }
-        return parents;
+        catch(FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        }
     }
 
     // writeToFile()-method
