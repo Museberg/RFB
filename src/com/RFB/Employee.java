@@ -58,7 +58,7 @@ public class Employee {
     }
 
     //Read from file method
-    public static void readFromFile(ArrayList<Employee> eployees) {
+    public static void readFromFile(ArrayList<Employee> employees) {
         try {
             Scanner input = new Scanner(new File(fileName));
             String line;
@@ -77,10 +77,16 @@ public class Employee {
     }
 
     //Write to a file method
-    public static void writeToFile(ArrayList<Employee> employees) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File(fileName));
-        for (int i = 0; i < employees.size(); i++) {
-            output.println(employees.get(i).toFile());
+    public static void writeToFile(ArrayList<Employee> employees) {
+        try {
+            PrintStream output = new PrintStream(new File(fileName));
+            for (int i = 0; i < employees.size(); i++) {
+                output.println(employees.get(i).toFile());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
     }
 

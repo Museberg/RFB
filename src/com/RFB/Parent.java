@@ -43,11 +43,17 @@ public class Parent {
     }
 
     // writeToFile()-method
-    public static void writeToFile(ArrayList<Parent> parents) throws FileNotFoundException {
-        // Creates a PrintStream that prints to a file
-        PrintStream parentOutput = new PrintStream(new File("src/Database/parentList.txt"));
-        for (Parent p : parents) {
-            parentOutput.println(p.toFile());
+    public static void writeToFile(ArrayList<Parent> parents) {
+        try {
+            // Creates a PrintStream that prints to a file
+            PrintStream parentOutput = new PrintStream(new File("src/Database/parentList.txt"));
+            for (Parent p : parents) {
+                parentOutput.println(p.toFile());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
     }
 

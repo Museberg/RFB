@@ -18,25 +18,17 @@ public class Room {
         this.roomName = roomName;
     }
 
-    // Getters and setters
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getRoomName() {
-        return roomName;
-    }
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-
     // Writes each room to a file
-    public static void writeToFile(ArrayList<Room> rooms) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File(fileName));
-        for (Room room : rooms) {
-            output.println(room.toFile());
+    public static void writeToFile(ArrayList<Room> rooms) {
+        try {
+            PrintStream output = new PrintStream(new File(fileName));
+            for (Room room : rooms) {
+                output.println(room.toFile());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
     }
 
@@ -56,6 +48,23 @@ public class Room {
         } catch (Exception e) {
             System.out.println("[Error]: An unknown error has occurred!");
         }
+    }
+
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
     // Used to save the room to a file

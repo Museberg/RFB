@@ -35,11 +35,18 @@ public class City {
             System.out.println("[Error]: An unknown error has occurred!");
         }
     }
+
     // Method for saving all City objects to city.txt
-    public static void writeToFile(ArrayList<City> cities) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("src/Database/city.txt"));
-        for (int i = 0; i < cities.size(); i++) {
-            output.println(cities.get(i).toFile());
+    public static void writeToFile(ArrayList<City> cities) {
+        try {
+            PrintStream output = new PrintStream(new File("src/Database/city.txt"));
+            for (int i = 0; i < cities.size(); i++) {
+                output.println(cities.get(i).toFile());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
     }
 

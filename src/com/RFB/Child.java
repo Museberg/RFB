@@ -27,43 +27,6 @@ public class Child {
         this.room_id = room_id;
         this.household_id = household_id;
     }
-    // Getters and setters
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public int getParent_id() {
-        return parent_id;
-    }
-    public void setParent_id(int parent_id) {
-        this.parent_id = parent_id;
-    }
-    public int getRoom_id() {
-        return room_id;
-    }
-    public void setRoom_id(int room_id) {
-        this.room_id = room_id;
-    }
-    public int getHousehold_id() {
-        return household_id;
-    }
-    public void setHousehold_id(int household_id) {
-        this.household_id = household_id;
-    }
 
     // Lets the user create a child by prompting them for the required information
     public static Child createChild(ArrayList<Parent> parents, ArrayList<Room> rooms, ArrayList<Household> households, ArrayList<Child> children) {
@@ -104,10 +67,9 @@ public class Child {
             System.out.println("Der er ingen stuer tilgængelige med ledige pladser. Ønsker du at sætte barnet på venteliste?");
             System.out.printf("%d - Ja%n%d - Nej", 1, 2);
             option = InputHelper.getOptionFromUser(1, 2);
-            if(option == 1){ // Adding child to waitlist
+            if (option == 1) { // Adding child to waitlist
                 roomID = 0;
-            }
-            else{ // Aborting creation of child
+            } else { // Aborting creation of child
                 System.out.println("Afbryder indmelding af barn");
                 return null;
             }
@@ -148,10 +110,16 @@ public class Child {
     }
 
     // Saving all children to file
-    public static void writeToFile(ArrayList<Child> children) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File(fileName));
-        for (Child child : children) {
-            output.println(child.toFile());
+    public static void writeToFile(ArrayList<Child> children) {
+        try {
+            PrintStream output = new PrintStream(new File(fileName));
+            for (Child child : children) {
+                output.println(child.toFile());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
     }
 
@@ -176,6 +144,55 @@ public class Child {
     // Returns the last issued ID for child
     private static int getLastID(ArrayList<Child> children) {
         return children.get(children.size() - 1).getId();
+    }
+
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getParent_id() {
+        return parent_id;
+    }
+
+    public void setParent_id(int parent_id) {
+        this.parent_id = parent_id;
+    }
+
+    public int getRoom_id() {
+        return room_id;
+    }
+
+    public void setRoom_id(int room_id) {
+        this.room_id = room_id;
+    }
+
+    public int getHousehold_id() {
+        return household_id;
+    }
+
+    public void setHousehold_id(int household_id) {
+        this.household_id = household_id;
     }
 
     @Override

@@ -22,26 +22,6 @@ public class Household {
         this.city_id = city_id;
     }
 
-    // Getters and setters
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public int getCity_id() {
-        return city_id;
-    }
-    public void setCity_id(int city_id) {
-        this.city_id = city_id;
-    }
-
     // Reads all the households from file
     public static void readFromFile(ArrayList<Household> households) {
         try {
@@ -61,11 +41,42 @@ public class Household {
     }
 
     // Writes all the households to file on a separate line
-    public static void writeToFile(ArrayList<Household> households) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File(fileName));
-        for (Household household : households) {
-            output.println(household.toFile());
+    public static void writeToFile(ArrayList<Household> households) {
+        try {
+            PrintStream output = new PrintStream(new File(fileName));
+            for (Household household : households) {
+                output.println(household.toFile());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
+    }
+
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id(int city_id) {
+        this.city_id = city_id;
     }
 
     // Used for saving household to file

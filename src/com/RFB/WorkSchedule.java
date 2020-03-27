@@ -43,11 +43,17 @@ public class WorkSchedule {
     }
 
     // Saves/writes the objects in the arraylist to the text file, by traversing through it
-    public static void writeToFile(ArrayList<WorkSchedule> schedules) throws FileNotFoundException {
-        String bs = System.getProperty("file.separator");
-        PrintStream output = new PrintStream(new File("src" + bs + "Database" + bs + "workschedule.txt"));
-        for (int i = 0; i < schedules.size(); i++) {  // prints every array element into the txt file, using the toFile method
-            output.println(schedules.get(i).toFile());
+    public static void writeToFile(ArrayList<WorkSchedule> schedules) {
+        try {
+            String bs = System.getProperty("file.separator");
+            PrintStream output = new PrintStream(new File("src" + bs + "Database" + bs + "workschedule.txt"));
+            for (int i = 0; i < schedules.size(); i++) {  // prints every array element into the txt file, using the toFile method
+                output.println(schedules.get(i).toFile());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[Error]: File was not found!");
+        } catch (Exception e) {
+            System.out.println("[Error]: An unknown error has occurred!");
         }
     }
 
