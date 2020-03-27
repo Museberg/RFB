@@ -16,25 +16,18 @@ public class Menu {
     }
 
     public static void startMenu() throws FileNotFoundException {
-        //ArrayList<Employee> employees = Employee.readFromFile();
         ArrayList<Employee> employees = new ArrayList<>();
         Employee.readFromFile(employees);
-        //ArrayList<City> cities = City.readFromFile();
         ArrayList<City> cities = new ArrayList<>();
         City.readFromFile(cities);
-        //ArrayList<Parent> parents = Parent.readFromFile(parents);
         ArrayList<Parent> parents = new ArrayList<>();
         Parent.readFromFile(parents);
-        //ArrayList<Child> children = Child.readFromFile();
         ArrayList<Child> children = new ArrayList<>();
         Child.readFromFile(children);
-        //ArrayList<WorkSchedule> schedules = WorkSchedule.readFromFile();
         ArrayList<WorkSchedule> schedules = new ArrayList<>();
         WorkSchedule.readFromFile(schedules);
-        //ArrayList<Room> rooms = Room.readFromFile();
         ArrayList<Room> rooms = new ArrayList<>();
         Room.readFromFile(rooms);
-        //ArrayList<Household> households = Household.readFromFile();
         ArrayList<Household> households = new ArrayList<>();
         Household.readFromFile(households);
 
@@ -77,9 +70,9 @@ public class Menu {
 
     private static void login() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Indtast venligst brugernavn");
+        System.out.println("Indtast venligst brugernavn (admin)");
         String username = input.next();
-        System.out.println("Indtast venligts kodeord");
+        System.out.println("Indtast venligts kodeord (admin)");
         String password = input.next();
 
         while (!username.equals("admin") || !password.equals("admin")) {
