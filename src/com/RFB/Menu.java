@@ -15,7 +15,7 @@ public class Menu {
         System.out.print("Indtast dit valg: ");
     }
 
-    public static void startMenu() throws FileNotFoundException {
+    public static void startMenu() {
         ArrayList<Employee> employees = new ArrayList<>();
         Employee.readFromFile(employees);
         ArrayList<City> cities = new ArrayList<>();
