@@ -136,11 +136,12 @@ public class Child {
         return new Child(id, firstName, lastName, parentID, roomID, householdID);
     }
 
-    // Iterates through each room and returns a list of rooms with at least 1 spot available
+    // Iterates through each room and returns a list of rooms with at least 1 spot available.
+    // Also does not return waiting list room
     public static ArrayList<Room> getAvailableRooms(ArrayList<Room> rooms, ArrayList<Child> children, int roomSize) {
         ArrayList<Room> availableRooms = new ArrayList<>();
         for (Room room : rooms) {
-            if (room.getChildrenInRoom(children) < roomSize) {
+            if (room.getChildrenInRoom(children) < roomSize && room.getId() != 0) {
                 availableRooms.add(room);
             }
         }
