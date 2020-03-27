@@ -70,9 +70,9 @@ public class Menu {
 
     private static void login() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Indtast venligst brugernavn");
+        System.out.println("Indtast venligst brugernavn (admin)");
         String username = input.next();
-        System.out.println("Indtast venligts kodeord");
+        System.out.println("Indtast venligts kodeord (admin)");
         String password = input.next();
 
         while (!username.equals("admin") || !password.equals("admin")) {
